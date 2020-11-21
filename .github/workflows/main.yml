@@ -22,6 +22,11 @@ jobs:
         git_pull_args: --rebase=merges
         git_push_args: --force
 
+    - name: Trigger Cron
+      run: |
+        git config --global user.name "TriggoBot"
+        git commit --allow-empty -m "Trigger Cron" && git push -f
+
   Build:
     needs: [Merge-Upstream]
     strategy:
